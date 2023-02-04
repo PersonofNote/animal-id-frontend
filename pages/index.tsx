@@ -1,12 +1,12 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import Layout from '../components/layout'
+import UploadAndDisplayImage from '../components/UploadAndDisplayImage'
 
 const Home = () => {
   const { user, isLoading } = useUser()
 
   return (
     <Layout user={user} loading={isLoading}>
-      <h1>Next.js and Auth0 Example</h1>
 
       {isLoading && <p>Loading login info...</p>}
 
@@ -24,12 +24,7 @@ const Home = () => {
       )}
 
       {user && (
-        <>
-          <h4>Rendered user info on the client</h4>
-          <img src={user.picture} alt="user picture" />
-          <p>nickname: {user.nickname}</p>
-          <p>name: {user.name}</p>
-        </>
+        <UploadAndDisplayImage />
       )}
     </Layout>
   )

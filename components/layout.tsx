@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from './header'
+import Header1 from './header1'
 
 type LayoutProps = {
   user?: any
@@ -14,7 +15,7 @@ const Layout = ({ user, loading = false, children }: LayoutProps) => {
         <title>Next.js with Auth0</title>
       </Head>
 
-      <Header user={user} loading={loading} />
+      <Header1 user={user} loading={loading} />
 
       <main>
         <div className="container">{children}</div>
@@ -23,7 +24,8 @@ const Layout = ({ user, loading = false, children }: LayoutProps) => {
       <style jsx>{`
         .container {
           max-width: 42rem;
-          margin: 1.5rem auto;
+          margin: auto;
+          padding: 1rem;
         }
       `}</style>
       <style jsx global>{`

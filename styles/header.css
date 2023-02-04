@@ -1,0 +1,194 @@
+@arrowRotate: 270deg;
+@animDurationstandard: 800ms;
+@animDurationhalf: calc(@animDurationstandard/2);
+@boxShadowstandard: 2px 2px 8px 4px rgba(211,211,211,0.5);
+@boxShadowbottom: 0 4px 2px -2px rgba(211,211,211,0.5);
+
+@keyframes menuClose {
+    0% {
+      top: 100%
+    }
+    30% {
+      top: 80%;
+      opacity: 0.5;
+    }
+    100% {
+      top: -250px;
+      opacity: 0;
+    }
+  }
+
+.top-menu-anchor {
+    height: 80.704px;
+    width: 100%;
+    display: block;
+}
+
+.top-menu {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    align-items: center;
+    z-index: 10;
+    padding-left: 1rem;
+    width: 100%;
+}
+.menu-links {
+        display: flex;
+        flex-direction: row;
+        margin-left: 1rem;
+        font-weight: bold;
+        transition: all 400ms;
+        list-style: none;
+    }
+
+.top-menu-item {
+padding: 0.3rem 1rem;
+border-radius: 4px;
+margin-bottom: 1rem;
+}
+
+
+.active {
+    border-bottom: 1px solid var(--primary);
+}
+
+.top-menu-link {
+text-decoration: none;
+color: var(--secondary);
+}
+
+.top-menu-link:hover {
+    color: var(--primary);
+    transition: color 500ms;
+}
+
+.logo-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo-wrap svg {
+    display: block;
+    opacity: 0;
+    transform: scale(2);
+    stroke-width: 6;
+    transition: all 800ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+}
+.site-logo {
+    height:64px;
+    width: 64px;
+    min-width: 32px;
+    min-height: 32px;
+    margin: 0;
+    margin-top: 12px;
+}
+.toggle-wrap {
+    display: none;
+}
+
+
+@media(max-width: 400px) {
+    .site-logo {
+        height:32px;
+        width: 32px;
+        margin: 0;
+        margin-top: 12px;
+    }
+    .top-menu-item {
+        padding: 0.3rem 0.5rem;
+    }
+    .menu-links {
+        padding-left: 0;
+    }
+}
+
+@media(max-width: 735px) {
+    .top-menu {
+        max-height: 6rem;
+    }
+}
+
+.top-menu.scrolling { 
+    position: fixed;
+    top: 0;
+}
+@media (max-width: 735px) {
+    .top-menu {
+    background-color: white;
+    box-shadow: @boxShadowbottom;
+    }
+    .logo-wrap {
+        height: auto;
+    }
+    .site-logo {
+        margin: 0;
+    }
+    .toggle-wrap svg {
+        display: none;
+    }
+    .top-menu-item {
+        margin-bottom: 0;
+    }
+}
+    /* Only apply dropdown styles on large screens */
+@media (min-width: 768px) {
+    .top-menu.scrolling .toggle-wrap {
+        display: block;
+    }
+    .top-menu.scrolling .toggle-wrap svg {
+        opacity: 1;
+        transform: scale(2);
+        transition: all 800ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+    }
+    .top-menu.scrolling .toggle-wrap.open svg{
+            transform: rotate(180deg) scale(2);
+            transition: all 800ms cubic-bezier(0.680, -0.550, 0.265, 1.550)
+    }
+    .top-manu.scrolling .toggle-wrap:focus-within svg{
+        transform: rotate(180deg) scale(2);
+        transition: all 800ms cubic-bezier(0.680, -0.550, 0.265, 1.550)
+    }
+    .top-menu.scrolling .menu-links {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: @boxShadowstandard;
+        top: -100px;
+        margin-left: 0;
+        opacity: 0;
+        left: 0;
+        transition: top 2s;
+    }
+    .menu-links .top-menu-item {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .menu-links .top-menu-item.active {
+        background-color: orange;
+    }
+    .menu-links .top-menu-item.active a {
+        color: white;
+    }
+    .top-menu.scrolling .menu-links.open {
+        top: 100%;
+        opacity: 1;
+        transition-duration: @animDurationhalf;
+        transition-delay: -250ms;
+        transition-property: top;
+        padding-left: 1rem;
+    }
+    .menu-links:focus-within {       
+            top: 100%;
+            opacity: 1;
+            transition-duration: @animDurationhalf;
+            transition-delay: -250ms;
+            transition-property: top;
+        
+    }
+}
