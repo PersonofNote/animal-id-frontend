@@ -25,7 +25,7 @@ const Header = ({ user, loading, siteTitle = "Test", siteLogo = "test", toggleIc
   ]
 
   const renderLinks = links.map(link => (
-    <li><Link className='top-menu-item' href={link.path}>{link.label}</Link></li>
+    <li key={`${link.label}-link`}><Link className='top-menu-item' href={link.path}>{link.label}</Link></li>
 )) 
 
   useEffect(() => {
