@@ -11,6 +11,7 @@ const berlinClock = (time) => {
       topHoursLamps[i] = 'R';
     }
   
+
     const topMinutesLamps = Array(11).fill('O');
   
     for (let i = 0; i < Math.floor(minutes / 5); i++) {
